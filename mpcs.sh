@@ -1,43 +1,44 @@
 #!/bin/bash
+#./mpcs.sh
 
 profname=.profile
 p4confname=.p4config
 exp=export
 YES=yes
 
-# Hello,
+# Hello, World!
 echo Hi $USER,
 echo "I am MaplePCSetup."
 echo "On your Maplesoft Linux Workstation,"
-echo "I can set up $profname, $p4confname, and sandbox."
+echo "I can set up $profname, $p4confname, and setup-sync sandbox."
 echo
+
 # Files and Directories
-## You may need to change this part carefully
+home=$HOME
 
-##### FIX the following 
-mapleroot=$HOME/sbox/main
-maplelib=$HOME/maple/lib
+mapleroot=$home/sbox/main
+maplelib=$home/maple/lib
 
-prof=$HOME/$profname
+prof=$home/$profname
 echo + Would you like to set up $profname? "[yes/no]"
 read check1var
 
-p4conf=$HOME/$p4confname
-echo + Would you like to set up $p4confname? "[yes/no]"
+p4conf=$home/$p4confname
+echo + Would you like to set up $p4confname\? "[yes/no]"
 read check2var
 
-echo + Whould you like to set up your Maple sandbox? "[yes/no]"
+echo + Would you like to set up your Maple sandbox? "[yes/no]"
 read check4var
 
 # Paths Update
 if [ "$YES" == "$check1var" ]; then
 	  echo + $profname will be created at \"$prof\"
-	echo + Is this location correct? "[yes/no]"
-	read check3var
-	if [ "$YES" != "$check3var" ]; then
-		echo + So, what is the correct path? "(like /home/$USER)"
-		read prof
-	fi
+	  echo + Is this location correct? "[yes/no]"
+	  read check3var
+	  if [ "$YES" != "$check3var" ]; then
+		    echo + So, what is the correct path? "(like /home/$USER)"
+		    read prof
+	  fi
 fi
 
 if [ "$YES" == "$check2var" ]; then
@@ -54,12 +55,6 @@ echo
 
 
 # Setup .profile
-## export PS1="\h \w \$ "
-## export MAPLE_ROOT=$HOME/sbox/main
-## export MAPLELIB=$HOME/maple/lib
-## export PATH=$MAPLE_ROOT/bin:$PATH
-## export P4CONFIG=.p4config
-
 echo_prof () {
     if [ ! -f "$mapleroot" ]; then 
         mkdir -p  $mapleroot
@@ -75,24 +70,21 @@ echo_prof () {
 }
 
 if [ "$YES" == "$check1var" ]; then
-	if [ -f "$prof" ]; then	
-		echo + $prof already exists!
-    echo + I will replace it with a new file. Continue? "[yes/no]"?
-    read check3var
-    if [ "$YES" == "$check3var" ]; then
-        rm $prof
+	  if [ -f "$prof" ]; then
+		    echo + $prof already exists!
+        echo + I will replace it with a new file. Continue? "[yes/no]"
+        read check3var
+        if [ "$YES" == "$check3var" ]; then
+            rm $prof
+            echo_prof
+        fi
+	  else
         echo_prof
-    fi
-	else
-      echo_prof
-	fi
+	  fi
+	  (. $prof)
 fi
 
 # Setup .p4config
-## P4CLIENT=username_sbox_main
-## P4PORT=perforce:1616
-## P4PASSWD=your perforce password
-
 echo_p4conf () {
     echo + To set up $p4confname, I need a few information:
     echo + What is your perforce username?
@@ -110,7 +102,7 @@ echo_p4conf () {
 if [ "$YES" == "$check2var" ]; then
 	  if [ -f "$p4conf" ]; then	
 		    echo + $p4conf already exists!
-        echo + I will replace it with a new file. Continue? "[yes/no]"?
+        echo + I will replace it with a new file. Continue? "[yes/no]"
         read check3var
         if [ "$YES" == "$check3var" ]; then
             rm $p4conf
@@ -121,7 +113,7 @@ if [ "$YES" == "$check2var" ]; then
 	  fi
 fi
 
-# Setup sandbox
+# Setup/sync sandbox
 if [ "$YES" == "$check4var" ]; then
     if [ ! -f "$mapleroot" ]; then 
         mkdir -p  $mapleroot
@@ -129,17 +121,12 @@ if [ "$YES" == "$check4var" ]; then
     echo + Is \"$p4client\" your perforce username? "[yes/no]"
     read check3var
     if [ "$YES" != "$check3var" ]; then
-        echo + What is your perforce username?
-        read p4client
+	if [ -f "$p4conf" ]; then
+	    rm $p4conf
+	fi
+    	echo_p4conf
     fi
-    echo TODO!
-    # cd $mapleroot && p4 client
-
-    # echo + Would you like to sync?
-    # read check3var
-    # if [ "$YES" == "$check3var" ]; then
-    #     cd $mapleroot && p4 sync
-    # fi
+    (cd $mapleroot; p4 sync)
 fi
 
 echo EOS
