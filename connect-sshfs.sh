@@ -1,15 +1,16 @@
 #!/bin/sh
-#./connect-sshfs.sh
+# run ./connect-sshfs.sh
 
+
+#################
 # the location:
 LOCATION=
-echo "+ Try to mount in $LOCATION"
-
 # username:
 USER=
-
 # server address
 SERVER=
+
+echo "+ Try to mount in $LOCATION"
 echo "+ From $USER@$SERVER"
 
 MOUNTS=$(mount | grep "$LOCATION")

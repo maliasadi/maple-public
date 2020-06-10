@@ -1,5 +1,6 @@
 #!/bin/bash
-#./mpcs.sh
+# run ./mpcs.sh
+
 
 profname=.profile
 p4confname=.p4config
@@ -10,7 +11,7 @@ YES=yes
 echo Hi $USER,
 echo "I am MaplePCSetup."
 echo "On your Maplesoft Linux Workstation,"
-echo "I can set up $profname, $p4confname, and setup-sync sandbox."
+echo "I can set up $profname, $p4confname, and (sync) sandbox."
 echo
 
 # Files and Directories
