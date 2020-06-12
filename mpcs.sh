@@ -15,7 +15,7 @@ echo "I can set up $PROFNAME, $P4CONFNAME, and (sync) sandbox."
 echo
 
 # Files and Directories
-home=$PWD
+home=$HOME
 
 MAPLEROOT=$home/sbox/main
 MAPLELIB=$home/maple/lib
