@@ -15,7 +15,7 @@ echo "+ From $USER@$SERVER"
 
 MOUNTS=$(mount | grep "$LOCATION")
 if [ ! -z "$MOUNTS" ] ; then
-    echo + Found the following mounted entry:
+    echo "+ Found the following mounted entry:"
     echo $MOUNTS
     exit 1
 fi
