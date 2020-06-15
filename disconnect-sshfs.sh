@@ -1,9 +1,9 @@
 #!/bin/sh
 #./disconnect-sshfs.sh
 
-# the location:
-ADRS=
+# location (local path):
+LOCATION=
 echo "+ Try to unmount $ADRS"
 
-fusermount -u $ADRS
+fusermount -u $LOCATION
 

@@ -3,7 +3,7 @@
 
 
 #################
-# the location:
+# location (local path):
 LOCATION=
 # username:
 USER=
