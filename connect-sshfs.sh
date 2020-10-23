@@ -1,6 +1,9 @@
 #!/bin/sh
-# run ./connect-sshfs.sh
+# ./connect-sshfs.sh
 
+# connect-sshfs.sh 
+#	- Mount folders and files from username@server_address in a folder. 
+#	- Set the 'LOCATION', 'USER', and 'SERVER' before using this script.
 
 #################
 # location (local path):

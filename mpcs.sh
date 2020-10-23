@@ -1,6 +1,11 @@
 #!/bin/bash
 # run ./mpcs.sh
 
+# MPCS is a script to set up 'profile', 'perforce', and (sync) 'sandbox' on your Maple Linux workstation. 
+# To use: 
+# - Download mpcs.sh or clone the repository,
+# - Make it executable, ($ chmod +x mpcs.sh)
+# - Run! ($ ./mpcs.sh)
 
 PROFNAME=.profile
 P4CONFNAME=.p4config
@@ -53,7 +58,6 @@ if [ "$YES" == "$CHECK2VAR" ]; then
 
 fi
 echo
-
 
 # Setup .profile
 echo_prof () {

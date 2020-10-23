@@ -1,5 +1,10 @@
 #!/bin/sh
-#./disconnect-sshfs.sh
+# ./disconnect-sshfs.sh
+
+# disconnect-sshfs.sh
+#	- Unmount!
+#	- Set the 'LOCATION' before using this script.
+
 
 # location (local path):
 LOCATION=
