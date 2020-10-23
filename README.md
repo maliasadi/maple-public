@@ -2,8 +2,7 @@
 
 ## MaplePCSetup
 MPCS is a script to set up 'profile', 'perforce', and (sync) 'sandbox' on your Maple Linux workstation. 
-
-To use: 
+- To use: 
 	- Download mpcs.sh or clone the repository,
 	- Make it executable, ($ chmod +x mpcs.sh)
 	- Run! ($ ./mpcs.sh)
