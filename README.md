@@ -12,6 +12,7 @@ MPCS is a script to set up 'profile', 'perforce', and (sync) 'sandbox' on your M
 	- Download (dis)connect-sshfs.sh or clone the repository,
 	- Make both executable, ($ chmod +x *connect-sshfs.sh)
 	- (optional) move both to '/bin'
+	- Set the 'LOCATION', 'USER', and 'SERVER' in (dis)connect-sshfs.sh 
 	- Run! ($ ./(dis)connect-sshfs.sh)
 
 - connect-sshfs.sh 
